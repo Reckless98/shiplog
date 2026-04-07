@@ -1,42 +1,36 @@
 # ShipLog
+ShipLog keeps release notes, changelog publishing, and editorial workflow in one place.
 
-ShipLog is a portfolio web app for changelogs and release notes.
-It includes a public changelog feed, per-release detail pages, pricing and docs pages, and a demo admin workspace for writing updates.
+Teams ship constantly, then lose time turning commits, tickets, and fixes into release notes people can actually read. ShipLog gives you a public changelog, release detail pages, RSS, and a small admin surface so updates can be written once and published cleanly.
 
-Tech stack: Next.js App Router, TypeScript, Tailwind CSS, shadcn/ui components, Framer Motion, next-themes, Lucide icons, Vitest.
+## Features
+- Public changelog feed with search and category filters
+- Card and timeline views for browsing releases
+- Per-release pages rendered from markdown content
+- Related release links and metadata for version context
+- Admin list with draft, published, and scheduled states
+- Editor routes for new entries and existing release updates
+- RSS feed at `/rss.xml`
+- Local draft persistence so the editor stays useful without a backend
+- Seeded release data across multiple versions
 
-## What it does
+Tech stack: Next.js 16 App Router, React 19, TypeScript, Tailwind CSS v4, Radix UI primitives, React Markdown, Fuse.js, Framer Motion, next-themes, Vitest.
 
-- `/` presents the product, feature areas, integrations, and an embedded changelog preview.
-- `/changelog` shows a searchable public feed with category filters, card view, timeline view, and an RSS entry point.
-- `/changelog/[slug]` renders full release notes with metadata, markdown content, and related releases.
-- `/admin` lists entries with draft, published, and scheduled states plus basic release stats.
-- `/admin/new` and `/admin/edit/[slug]` provide a markdown editor, version tagging, category selection, and publish-date controls.
-- `/pricing` covers starter, growth, and enterprise plans.
-- `/docs` documents embeds, markdown release formatting, and RSS.
-
-## Notes
-
-- The dataset ships with 15 realistic release entries across multiple versions.
-- Public routes read published mock data.
-- The demo editor stores changes in browser local storage so the admin workflow stays interactive without adding a database.
-- `/rss.xml` returns a generated RSS feed from published entries.
-
-## Project structure
-
-- `app/` route files, metadata, global styles, and the RSS route.
-- `components/` reusable UI primitives, changelog feed, admin dashboard, editor, and embed preview.
-- `lib/` mock release data, filtering/stat helpers, metadata helpers, and local draft storage helpers.
-- `tests/` Vitest coverage for changelog utilities.
-- `.github/workflows/ci.yml` runs lint and build on push and pull request.
+## Routes
+- `/` landing page
+- `/changelog`, `/changelog/[slug]` public feed and release detail
+- `/admin`, `/admin/new` release management and new entry flow
+- `/admin/edit/[slug]` existing entry editor
+- `/docs`, `/pricing`, `/rss.xml` documentation, plans, and feed output
 
 ## Development
+```bash
+npm install
+npm run dev
+```
+Open `http://localhost:3000`.
 
-`npm install`
-`npm run lint`
+## Testing
 `npm test`
-`npm run build`
 
-## License
-
-MIT
+Build with `npm run build`.
